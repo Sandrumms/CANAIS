@@ -1,0 +1,709 @@
+<!DOCTYPE html>
+<!-- saved from url=(0022)http://127.0.0.1:5000/ -->
+<html lang="pt-br"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Canais de Streaming</title>
+    <link rel="stylesheet" href="./CANAIS_files/style.css">
+    <style>
+        /* Estilo aprimorado */
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background: linear-gradient(to right, #141e30, #243b55);
+            color: #f3f3f3;
+        }
+
+        .container {
+            display: flex;
+            height: 100vh;
+        }
+
+        .sidebar {
+            width: 300px;
+            background: #1a2739;
+            padding: 20px;
+            overflow-y: auto;
+            border-right: 2px solid #243b55;
+        }
+
+        .search-bar {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 20px;
+            border: none;
+            border-radius: 5px;
+            outline: none;
+        }
+
+        .category {
+            font-size: 1.2em;
+            margin: 15px 0;
+            color: #f0b429;
+        }
+
+        ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        li a {
+            display: flex;
+            align-items: center;
+            text-decoration: none;
+            color: #f3f3f3;
+            padding: 10px 5px;
+            border-radius: 5px;
+            transition: background 0.3s ease;
+        }
+
+        li a:hover {
+            background: #f0b429;
+            color: #141e30;
+        }
+
+        .channel-icon {
+            width: 40px;
+            height: 40px;
+            margin-right: 10px;
+            border-radius: 50%;
+        }
+
+        .player {
+            flex: 1;
+            padding: 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+        }
+
+        iframe {
+            width: 100%;
+            height: 100%;
+            max-height: 600px;
+            border-radius: 10px;
+            border: 3px solid #243b55;
+        }
+
+        .theme-toggle {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            padding: 10px 15px;
+            background: #f0b429;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background 0.3s ease;
+        }
+
+        .theme-toggle:hover {
+            background: #e0990e;
+        }
+
+        .favorite-btn {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            padding: 15px;
+            background: #f0b429;
+            color: #141e30;
+            font-size: 1.5em;
+            border: none;
+            border-radius: 50%;
+            cursor: pointer;
+            transition: transform 0.3s ease;
+        }
+
+        .favorite-btn:hover {
+            transform: scale(1.1);
+        }
+    </style>
+</head>
+<body class="light">
+    <!-- Botão para alternar tema -->
+    <button id="themeToggle" class="theme-toggle">Alternar Tema</button>
+
+    <!-- Botão para acessar favoritos -->
+    <button id="favoriteBtn" class="favorite-btn">★</button>
+
+    <div class="container">
+        <!-- Sidebar com ícones e barra de busca -->
+        <div class="sidebar">
+            <input type="text" id="searchBar" placeholder="Buscar canais..." onkeyup="searchChannels()" class="search-bar">
+            <ul id="channelList">
+                
+                    <li class="category">Globo</li>
+                    
+                        <li>
+                            <a href="javascript:void(0);" class="channel-link" onclick="changeChannel(&#39;https://reidoscanais.tv/embed/?id=globorj-globorio&amp;autoplay=1&#39;)" data-name="Globo Rio">
+                                <img src="./CANAIS_files/Globo_Rio.png" alt="Globo Rio" class="channel-icon">
+                                Globo Rio
+                            </a>
+                        </li>
+                    
+                        <li>
+                            <a href="javascript:void(0);" class="channel-link" onclick="changeChannel(&#39;https://reidoscanais.tv/embed/?id=globorj-intertvaltolitoral&#39;)" data-name="InterTV Alto Litoral">
+                                <img src="./CANAIS_files/InterTV_Alto_Litoral.png" alt="InterTV Alto Litoral" class="channel-icon">
+                                InterTV Alto Litoral
+                            </a>
+                        </li>
+                    
+                        <li>
+                            <a href="javascript:void(0);" class="channel-link" onclick="changeChannel(&#39;https://reidoscanais.tv/embed/?id=globorj-intertvserramar&#39;)" data-name="InterTV Serra+Mar">
+                                <img src="./CANAIS_files/InterTV_Serra+Mar.png" alt="InterTV Serra+Mar" class="channel-icon">
+                                InterTV Serra+Mar
+                            </a>
+                        </li>
+                    
+                        <li>
+                            <a href="javascript:void(0);" class="channel-link" onclick="changeChannel(&#39;https://reidoscanais.tv/embed/?id=globorj-tvriosul&#39;)" data-name="TV Rio Sul">
+                                <img src="./CANAIS_files/TV_Rio_Sul.png" alt="TV Rio Sul" class="channel-icon">
+                                TV Rio Sul
+                            </a>
+                        </li>
+                    
+                        <li>
+                            <a href="javascript:void(0);" class="channel-link" onclick="changeChannel(&#39;https://reidoscanais.tv/embed/?id=globosp-globosaopaulo&#39;)" data-name="Globo São Paulo">
+                                <img src="./CANAIS_files/Globo_São_Paulo.png" alt="Globo São Paulo" class="channel-icon">
+                                Globo São Paulo
+                            </a>
+                        </li>
+                    
+                        <li>
+                            <a href="javascript:void(0);" class="channel-link" onclick="changeChannel(&#39;https://reidoscanais.tv/embed/?id=globomg-tvintegracaojuizdefora&#39;)" data-name="TV Integração Juiz de Fora">
+                                <img src="./CANAIS_files/TV_Integração_Juiz_de_Fora.png" alt="TV Integração Juiz de Fora" class="channel-icon">
+                                TV Integração Juiz de Fora
+                            </a>
+                        </li>
+                    
+                        <li>
+                            <a href="javascript:void(0);" class="channel-link" onclick="changeChannel(&#39;https://reidoscanais.tv/embed/?id=globosc-nsctvjoinville&#39;)" data-name="NSC TV Joinville">
+                                <img src="./CANAIS_files/NSC_TV_Joinville.png" alt="NSC TV Joinville" class="channel-icon">
+                                NSC TV Joinville
+                            </a>
+                        </li>
+                    
+                        <li>
+                            <a href="javascript:void(0);" class="channel-link" onclick="changeChannel(&#39;https://reidoscanais.tv/embed/?id=studiouniversal&#39;)" data-name="Studio">
+                                <img src="./CANAIS_files/Studio.png" alt="Studio" class="channel-icon">
+                                Studio
+                            </a>
+                        </li>
+                    
+                        <li>
+                            <a href="javascript:void(0);" class="channel-link" onclick="changeChannel(&#39;https://reidoscanais.tv/embed/?id=viva&#39;)" data-name="Viva">
+                                <img src="./CANAIS_files/Viva.png" alt="Viva" class="channel-icon">
+                                Viva
+                            </a>
+                        </li>
+                    
+                        <li>
+                            <a href="javascript:void(0);" class="channel-link" onclick="changeChannel(&#39;https://reidoscanais.tv/embed/?id=universaltv&#39;)" data-name="Universal">
+                                <img src="./CANAIS_files/Universal.png" alt="Universal" class="channel-icon">
+                                Universal
+                            </a>
+                        </li>
+                    
+                        <li>
+                            <a href="javascript:void(0);" class="channel-link" onclick="changeChannel(&#39;https://reidoscanais.tv/embed/?id=canaloff&#39;)" data-name="Canal Off">
+                                <img src="./CANAIS_files/Canal_Off.png" alt="Canal Off" class="channel-icon">
+                                Canal Off
+                            </a>
+                        </li>
+                    
+                        <li>
+                            <a href="javascript:void(0);" class="channel-link" onclick="changeChannel(&#39;https://reidoscanais.tv/embed/?id=multishow&#39;)" data-name="Multishow">
+                                <img src="./CANAIS_files/Multishow.png" alt="Multishow" class="channel-icon">
+                                Multishow
+                            </a>
+                        </li>
+                    
+                        <li>
+                            <a href="javascript:void(0);" class="channel-link" onclick="changeChannel(&#39;https://reidoscanais.tv/embed/?id=modoviagem&#39;)" data-name="Modo Viagem">
+                                <img src="./CANAIS_files/Modo_Viagem.png" alt="Modo Viagem" class="channel-icon">
+                                Modo Viagem
+                            </a>
+                        </li>
+                    
+                
+                    <li class="category">Canais Abertos</li>
+                    
+                        <li>
+                            <a href="javascript:void(0);" class="channel-link" onclick="changeChannel(&#39;https://reidoscanais.tv/embed/?id=sbt&#39;)" data-name="SBT">
+                                <img src="./CANAIS_files/SBT.png" alt="SBT" class="channel-icon">
+                                SBT
+                            </a>
+                        </li>
+                    
+                        <li>
+                            <a href="javascript:void(0);" class="channel-link" onclick="changeChannel(&#39;https://reidoscanais.tv/embed/?id=band&#39;)" data-name="Band">
+                                <img src="./CANAIS_files/Band.png" alt="Band" class="channel-icon">
+                                Band
+                            </a>
+                        </li>
+                    
+                        <li>
+                            <a href="javascript:void(0);" class="channel-link" onclick="changeChannel(&#39;https://reidoscanais.tv/embed/?id=recordsp&#39;)" data-name="Record SP">
+                                <img src="./CANAIS_files/Record_SP.png" alt="Record SP" class="channel-icon">
+                                Record SP
+                            </a>
+                        </li>
+                    
+                        <li>
+                            <a href="javascript:void(0);" class="channel-link" onclick="changeChannel(&#39;https://reidoscanais.tv/embed/?id=redetv&#39;)" data-name="Rede TV!">
+                                <img src="./CANAIS_files/Rede_TV!.png" alt="Rede TV!" class="channel-icon">
+                                Rede TV!
+                            </a>
+                        </li>
+                    
+                        <li>
+                            <a href="javascript:void(0);" class="channel-link" onclick="changeChannel(&#39;https://reidoscanais.tv/embed/?id=tvdiario&#39;)" data-name="TV Diário">
+                                <img src="./CANAIS_files/TV_Diário.png" alt="TV Diário" class="channel-icon">
+                                TV Diário
+                            </a>
+                        </li>
+                    
+                        <li>
+                            <a href="javascript:void(0);" class="channel-link" onclick="changeChannel(&#39;https://reidoscanais.tv/embed/?id=tvcultura&#39;)" data-name="TV Cultura">
+                                <img src="./CANAIS_files/TV_Cultura.png" alt="TV Cultura" class="channel-icon">
+                                TV Cultura
+                            </a>
+                        </li>
+                    
+                        <li>
+                            <a href="javascript:void(0);" class="channel-link" onclick="changeChannel(&#39;https://reidoscanais.tv/embed/?id=tvbrasil&#39;)" data-name="TV Brasil">
+                                <img src="./CANAIS_files/TV_Brasil.png" alt="TV Brasil" class="channel-icon">
+                                TV Brasil
+                            </a>
+                        </li>
+                    
+                
+                    <li class="category">Notícias</li>
+                    
+                        <li>
+                            <a href="javascript:void(0);" class="channel-link" onclick="changeChannel(&#39;https://reidoscanais.tv/embed/?id=globonews&#39;)" data-name="Globo News">
+                                <img src="./CANAIS_files/Globo_News.png" alt="Globo News" class="channel-icon">
+                                Globo News
+                            </a>
+                        </li>
+                    
+                        <li>
+                            <a href="javascript:void(0);" class="channel-link" onclick="changeChannel(&#39;https://reidoscanais.tv/embed/?id=cnnbrasil&#39;)" data-name="CNN Brasil">
+                                <img src="./CANAIS_files/CNN_Brasil.png" alt="CNN Brasil" class="channel-icon">
+                                CNN Brasil
+                            </a>
+                        </li>
+                    
+                        <li>
+                            <a href="javascript:void(0);" class="channel-link" onclick="changeChannel(&#39;https://reidoscanais.tv/embed/?id=bandnews&#39;)" data-name="Band News">
+                                <img src="./CANAIS_files/Band_News.png" alt="Band News" class="channel-icon">
+                                Band News
+                            </a>
+                        </li>
+                    
+                        <li>
+                            <a href="javascript:void(0);" class="channel-link" onclick="changeChannel(&#39;https://reidoscanais.tv/embed/?id=jpnews&#39;)" data-name="JP News">
+                                <img src="./CANAIS_files/JP_News.png" alt="JP News" class="channel-icon">
+                                JP News
+                            </a>
+                        </li>
+                    
+                        <li>
+                            <a href="javascript:void(0);" class="channel-link" onclick="changeChannel(&#39;https://reidoscanais.tv/embed/?id=recordnews&#39;)" data-name="Record News">
+                                <img src="./CANAIS_files/Record_News.png" alt="Record News" class="channel-icon">
+                                Record News
+                            </a>
+                        </li>
+                    
+                
+                    <li class="category">ESPN</li>
+                    
+                        <li>
+                            <a href="javascript:void(0);" class="channel-link" onclick="changeChannel(&#39;https://reidoscanais.tv/embed/?id=espn&#39;)" data-name="Espn">
+                                <img src="./CANAIS_files/Espn.png" alt="Espn" class="channel-icon">
+                                Espn
+                            </a>
+                        </li>
+                    
+                        <li>
+                            <a href="javascript:void(0);" class="channel-link" onclick="changeChannel(&#39;https://reidoscanais.tv/embed/?id=espn2&#39;)" data-name="Espn 2">
+                                <img src="./CANAIS_files/Espn_2.png" alt="Espn 2" class="channel-icon">
+                                Espn 2
+                            </a>
+                        </li>
+                    
+                        <li>
+                            <a href="javascript:void(0);" class="channel-link" onclick="changeChannel(&#39;https://reidoscanais.tv/embed/?id=espn3&#39;)" data-name="Espn 3">
+                                <img src="./CANAIS_files/Espn_3.png" alt="Espn 3" class="channel-icon">
+                                Espn 3
+                            </a>
+                        </li>
+                    
+                        <li>
+                            <a href="javascript:void(0);" class="channel-link" onclick="changeChannel(&#39;https://reidoscanais.tv/embed/?id=espn4&#39;)" data-name="Espn 4">
+                                <img src="./CANAIS_files/Espn_4.png" alt="Espn 4" class="channel-icon">
+                                Espn 4
+                            </a>
+                        </li>
+                    
+                        <li>
+                            <a href="javascript:void(0);" class="channel-link" onclick="changeChannel(&#39;https://reidoscanais.tv/embed/?id=espn5&#39;)" data-name="Espn 5">
+                                <img src="./CANAIS_files/Espn_5.png" alt="Espn 5" class="channel-icon">
+                                Espn 5
+                            </a>
+                        </li>
+                    
+                        <li>
+                            <a href="javascript:void(0);" class="channel-link" onclick="changeChannel(&#39;https://reidoscanais.tv/embed/?id=espn6&#39;)" data-name="Espn 6">
+                                <img src="./CANAIS_files/Espn_6.png" alt="Espn 6" class="channel-icon">
+                                Espn 6
+                            </a>
+                        </li>
+                    
+                
+                    <li class="category">HBO</li>
+                    
+                        <li>
+                            <a href="javascript:void(0);" class="channel-link" onclick="changeChannel(&#39;https://reidoscanais.tv/embed/?id=hbo&#39;)" data-name="Hbo">
+                                <img src="./CANAIS_files/Hbo.png" alt="Hbo" class="channel-icon">
+                                Hbo
+                            </a>
+                        </li>
+                    
+                        <li>
+                            <a href="javascript:void(0);" class="channel-link" onclick="changeChannel(&#39;https://reidoscanais.tv/embed/?id=hbo2&#39;)" data-name="Hbo 2">
+                                <img src="./CANAIS_files/Hbo_2.png" alt="Hbo 2" class="channel-icon">
+                                Hbo 2
+                            </a>
+                        </li>
+                    
+                        <li>
+                            <a href="javascript:void(0);" class="channel-link" onclick="changeChannel(&#39;https://reidoscanais.tv/embed/?id=hboplus&#39;)" data-name="Hbo PLUS">
+                                <img src="./CANAIS_files/Hbo_PLUS.png" alt="Hbo PLUS" class="channel-icon">
+                                Hbo PLUS
+                            </a>
+                        </li>
+                    
+                        <li>
+                            <a href="javascript:void(0);" class="channel-link" onclick="changeChannel(&#39;https://reidoscanais.tv/embed/?id=hbosignature&#39;)" data-name="Hbo SIGNATURE">
+                                <img src="./CANAIS_files/Hbo_SIGNATURE.png" alt="Hbo SIGNATURE" class="channel-icon">
+                                Hbo SIGNATURE
+                            </a>
+                        </li>
+                    
+                        <li>
+                            <a href="javascript:void(0);" class="channel-link" onclick="changeChannel(&#39;https://reidoscanais.tv/embed/?id=hboextreme&#39;)" data-name="Hbo EXTREME">
+                                <img src="./CANAIS_files/Hbo_EXTREME.png" alt="Hbo EXTREME" class="channel-icon">
+                                Hbo EXTREME
+                            </a>
+                        </li>
+                    
+                        <li>
+                            <a href="javascript:void(0);" class="channel-link" onclick="changeChannel(&#39;https://reidoscanais.tv/embed/?id=hbofamily&#39;)" data-name="Hbo FAMILY">
+                                <img src="./CANAIS_files/Hbo_FAMILY.png" alt="Hbo FAMILY" class="channel-icon">
+                                Hbo FAMILY
+                            </a>
+                        </li>
+                    
+                        <li>
+                            <a href="javascript:void(0);" class="channel-link" onclick="changeChannel(&#39;https://reidoscanais.tv/embed/?id=tlc&#39;)" data-name="TLC">
+                                <img src="./CANAIS_files/TLC.png" alt="TLC" class="channel-icon">
+                                TLC
+                            </a>
+                        </li>
+                    
+                        <li>
+                            <a href="javascript:void(0);" class="channel-link" onclick="changeChannel(&#39;https://reidoscanais.tv/embed/?id=warnertv&#39;)" data-name="WARNER">
+                                <img src="./CANAIS_files/WARNER.png" alt="WARNER" class="channel-icon">
+                                WARNER
+                            </a>
+                        </li>
+                    
+                        <li>
+                            <a href="javascript:void(0);" class="channel-link" onclick="changeChannel(&#39;https://reidoscanais.tv/embed/?id=tnt&#39;)" data-name="TNT">
+                                <img src="./CANAIS_files/TNT.png" alt="TNT" class="channel-icon">
+                                TNT
+                            </a>
+                        </li>
+                    
+                        <li>
+                            <a href="javascript:void(0);" class="channel-link" onclick="changeChannel(&#39;https://reidoscanais.tv/embed/?id=tntnovelas&#39;)" data-name="TNT NOVELAS">
+                                <img src="./CANAIS_files/TNT_NOVELAS.png" alt="TNT NOVELAS" class="channel-icon">
+                                TNT NOVELAS
+                            </a>
+                        </li>
+                    
+                        <li>
+                            <a href="javascript:void(0);" class="channel-link" onclick="changeChannel(&#39;https://reidoscanais.tv/embed/?id=cinemax&#39;)" data-name="CINEMAX">
+                                <img src="./CANAIS_files/CINEMAX.png" alt="CINEMAX" class="channel-icon">
+                                CINEMAX
+                            </a>
+                        </li>
+                    
+                
+                    <li class="category">Discovery</li>
+                    
+                        <li>
+                            <a href="javascript:void(0);" class="channel-link" onclick="changeChannel(&#39;https://reidoscanais.tv/embed/?id=discoverychannel&#39;)" data-name="Discovery Channel">
+                                <img src="./CANAIS_files/Discovery_Channel.png" alt="Discovery Channel" class="channel-icon">
+                                Discovery Channel
+                            </a>
+                        </li>
+                    
+                        <li>
+                            <a href="javascript:void(0);" class="channel-link" onclick="changeChannel(&#39;https://reidoscanais.tv/embed/?id=discoveryworld&#39;)" data-name="Discovery World">
+                                <img src="./CANAIS_files/Discovery_World.png" alt="Discovery World" class="channel-icon">
+                                Discovery World
+                            </a>
+                        </li>
+                    
+                        <li>
+                            <a href="javascript:void(0);" class="channel-link" onclick="changeChannel(&#39;https://reidoscanais.tv/embed/?id=discoveryturbo&#39;)" data-name="Discovery Turbo">
+                                <img src="./CANAIS_files/Discovery_Turbo.png" alt="Discovery Turbo" class="channel-icon">
+                                Discovery Turbo
+                            </a>
+                        </li>
+                    
+                        <li>
+                            <a href="javascript:void(0);" class="channel-link" onclick="changeChannel(&#39;https://reidoscanais.tv/embed/?id=discoveryid&#39;)" data-name="Discovery ID">
+                                <img src="./CANAIS_files/Discovery_ID.png" alt="Discovery ID" class="channel-icon">
+                                Discovery ID
+                            </a>
+                        </li>
+                    
+                        <li>
+                            <a href="javascript:void(0);" class="channel-link" onclick="changeChannel(&#39;https://reidoscanais.tv/embed/?id=discoverykids&#39;)" data-name="Discovery Kids">
+                                <img src="./CANAIS_files/Discovery_Kids.png" alt="Discovery Kids" class="channel-icon">
+                                Discovery Kids
+                            </a>
+                        </li>
+                    
+                        <li>
+                            <a href="javascript:void(0);" class="channel-link" onclick="changeChannel(&#39;https://reidoscanais.tv/embed/?id=discoverytheater&#39;)" data-name="Discovery Theater">
+                                <img src="./CANAIS_files/Discovery_Theater.png" alt="Discovery Theater" class="channel-icon">
+                                Discovery Theater
+                            </a>
+                        </li>
+                    
+                        <li>
+                            <a href="javascript:void(0);" class="channel-link" onclick="changeChannel(&#39;https://reidoscanais.tv/embed/?id=discoveryheh&#39;)" data-name="Discovery Home &amp; Health">
+                                <img src="./CANAIS_files/Discovery_Home_&amp;_Health.png" alt="Discovery Home &amp; Health" class="channel-icon">
+                                Discovery Home &amp; Health
+                            </a>
+                        </li>
+                    
+                        <li>
+                            <a href="javascript:void(0);" class="channel-link" onclick="changeChannel(&#39;https://reidoscanais.tv/embed/?id=foodnetwork&#39;)" data-name="Food Network">
+                                <img src="./CANAIS_files/Food_Network.png" alt="Food Network" class="channel-icon">
+                                Food Network
+                            </a>
+                        </li>
+                    
+                        <li>
+                            <a href="javascript:void(0);" class="channel-link" onclick="changeChannel(&#39;https://reidoscanais.tv/embed/?id=discoveryscience&#39;)" data-name="Discovery Science">
+                                <img src="./CANAIS_files/Discovery_Science.png" alt="Discovery Science" class="channel-icon">
+                                Discovery Science
+                            </a>
+                        </li>
+                    
+                        <li>
+                            <a href="javascript:void(0);" class="channel-link" onclick="changeChannel(&#39;https://reidoscanais.tv/embed/?id=animalplanet&#39;)" data-name="Animal Planet">
+                                <img src="./CANAIS_files/Animal_Planet.png" alt="Animal Planet" class="channel-icon">
+                                Animal Planet
+                            </a>
+                        </li>
+                    
+                
+                    <li class="category">Disney</li>
+                    
+                        <li>
+                            <a href="javascript:void(0);" class="channel-link" onclick="changeChannel(&#39;https://reidoscanais.tv/embed/?id=starchannel&#39;)" data-name="Star Channel">
+                                <img src="./CANAIS_files/Star_Channel.png" alt="Star Channel" class="channel-icon">
+                                Star Channel
+                            </a>
+                        </li>
+                    
+                        <li>
+                            <a href="javascript:void(0);" class="channel-link" onclick="changeChannel(&#39;https://reidoscanais.tv/embed/?id=fx&#39;)" data-name="FX">
+                                <img src="./CANAIS_files/FX.png" alt="FX" class="channel-icon">
+                                FX
+                            </a>
+                        </li>
+                    
+                        <li>
+                            <a href="javascript:void(0);" class="channel-link" onclick="changeChannel(&#39;https://reidoscanais.tv/embed/?id=disneychannel&#39;)" data-name="Disney Channel">
+                                <img src="./CANAIS_files/Disney_Channel.png" alt="Disney Channel" class="channel-icon">
+                                Disney Channel
+                            </a>
+                        </li>
+                    
+                        <li>
+                            <a href="javascript:void(0);" class="channel-link" onclick="changeChannel(&#39;https://reidoscanais.tv/embed/?id=cinecanal&#39;)" data-name="Cine Canal">
+                                <img src="./CANAIS_files/Cine_Canal.png" alt="Cine Canal" class="channel-icon">
+                                Cine Canal
+                            </a>
+                        </li>
+                    
+                        <li>
+                            <a href="javascript:void(0);" class="channel-link" onclick="changeChannel(&#39;https://reidoscanais.tv/embed/?id=aee&#39;)" data-name="A&amp;E">
+                                <img src="./CANAIS_files/A&amp;E.png" alt="A&amp;E" class="channel-icon">
+                                A&amp;E
+                            </a>
+                        </li>
+                    
+                        <li>
+                            <a href="javascript:void(0);" class="channel-link" onclick="changeChannel(&#39;https://reidoscanais.tv/embed/?id=lifetime&#39;)" data-name="Lifetime">
+                                <img src="./CANAIS_files/Lifetime.png" alt="Lifetime" class="channel-icon">
+                                Lifetime
+                            </a>
+                        </li>
+                    
+                
+                    <li class="category">History</li>
+                    
+                        <li>
+                            <a href="javascript:void(0);" class="channel-link" onclick="changeChannel(&#39;https://reidoscanais.tv/embed/?id=history&#39;)" data-name="History">
+                                <img src="./CANAIS_files/History.png" alt="History" class="channel-icon">
+                                History
+                            </a>
+                        </li>
+                    
+                        <li>
+                            <a href="javascript:void(0);" class="channel-link" onclick="changeChannel(&#39;https://reidoscanais.tv/embed/?id=history2&#39;)" data-name="History 2">
+                                <img src="./CANAIS_files/History_2.png" alt="History 2" class="channel-icon">
+                                History 2
+                            </a>
+                        </li>
+                    
+                
+                    <li class="category">SONY</li>
+                    
+                        <li>
+                            <a href="javascript:void(0);" class="channel-link" onclick="changeChannel(&#39;https://reidoscanais.tv/embed/?id=sonychannel&#39;)" data-name="Sony Channel">
+                                <img src="./CANAIS_files/Sony_Channel.png" alt="Sony Channel" class="channel-icon">
+                                Sony Channel
+                            </a>
+                        </li>
+                    
+                        <li>
+                            <a href="javascript:void(0);" class="channel-link" onclick="changeChannel(&#39;https://reidoscanais.tv/embed/?id=sonymovies&#39;)" data-name="Sony Movies">
+                                <img src="./CANAIS_files/Sony_Movies.png" alt="Sony Movies" class="channel-icon">
+                                Sony Movies
+                            </a>
+                        </li>
+                    
+                
+                    <li class="category">Paramount</li>
+                    
+                        <li>
+                            <a href="javascript:void(0);" class="channel-link" onclick="changeChannel(&#39;https://reidoscanais.tv/embed/?id=paramountnetwork&#39;)" data-name="Paramount Network">
+                                <img src="./CANAIS_files/Paramount_Network.png" alt="Paramount Network" class="channel-icon">
+                                Paramount Network
+                            </a>
+                        </li>
+                    
+                        <li>
+                            <a href="javascript:void(0);" class="channel-link" onclick="changeChannel(&#39;https://reidoscanais.tv/embed/?id=mtv&#39;)" data-name="MTV">
+                                <img src="./CANAIS_files/MTV.png" alt="MTV" class="channel-icon">
+                                MTV
+                            </a>
+                        </li>
+                    
+                        <li>
+                            <a href="javascript:void(0);" class="channel-link" onclick="changeChannel(&#39;https://reidoscanais.tv/embed/?id=mtvlive&#39;)" data-name="MTV Live">
+                                <img src="./CANAIS_files/MTV_Live.png" alt="MTV Live" class="channel-icon">
+                                MTV Live
+                            </a>
+                        </li>
+                    
+                        <li>
+                            <a href="javascript:void(0);" class="channel-link" onclick="changeChannel(&#39;https://reidoscanais.tv/embed/?id=nickelodeon&#39;)" data-name="Nickelodeon">
+                                <img src="./CANAIS_files/Nickelodeon.png" alt="Nickelodeon" class="channel-icon">
+                                Nickelodeon
+                            </a>
+                        </li>
+                    
+                        <li>
+                            <a href="javascript:void(0);" class="channel-link" onclick="changeChannel(&#39;https://reidoscanais.tv/embed/?id=nickjr&#39;)" data-name="Nick Jr.">
+                                <img src="./CANAIS_files/Nick_Jr..png" alt="Nick Jr." class="channel-icon">
+                                Nick Jr.
+                            </a>
+                        </li>
+                    
+                        <li>
+                            <a href="javascript:void(0);" class="channel-link" onclick="changeChannel(&#39;https://reidoscanais.tv/embed/?id=sportv&#39;)" data-name="Sportv">
+                                <img src="./CANAIS_files/Sportv.png" alt="Sportv" class="channel-icon">
+                                Sportv
+                            </a>
+                        </li>
+                    
+                
+            </ul>
+        </div>
+
+        <!-- Player com bordas arredondadas e funcionalidade para tela cheia -->
+        <div class="player">
+            <iframe id="player" name="player" src="./CANAIS_files/saved_resource.html" frameborder="0" allowfullscreen="" loading="eager">
+            </iframe>
+        </div>
+    </div>
+
+    <script>
+        // Alternar tema claro/escuro com persistência
+        const themeToggle = document.getElementById('themeToggle');
+        const body = document.body;
+
+        // Carregar tema salvo no localStorage
+        const savedTheme = localStorage.getItem('theme') || 'light';
+        body.classList.add(savedTheme);
+
+        // Alternar tema e salvar no localStorage
+        themeToggle.addEventListener('click', () => {
+            const currentTheme = body.classList.contains('dark') ? 'light' : 'dark';
+            body.className = currentTheme;
+            localStorage.setItem('theme', currentTheme);
+        });
+
+        // Trocar o canal no player
+        function changeChannel(url) {
+            const player = document.getElementById("player");
+            if (player.src !== url) { // Evita recarregamento desnecessário
+                player.src = url;
+            }
+        }
+
+        // Gerenciar favoritos
+        const favoriteBtn = document.getElementById('favoriteBtn');
+        const favorites = JSON.parse(localStorage.getItem('favorites')) || [];
+
+        favoriteBtn.addEventListener('click', () => {
+            const currentChannel = document.querySelector('.sidebar a:hover');
+            if (currentChannel) {
+                const channelName = currentChannel.dataset.name;
+                if (!favorites.includes(channelName)) {
+                    favorites.push(channelName);
+                    alert(`${channelName} adicionado aos favoritos!`);
+                    localStorage.setItem('favorites', JSON.stringify(favorites));
+                } else {
+                    alert(`${channelName} já está nos favoritos.`);
+                }
+            } else {
+                alert('Selecione um canal para adicionar aos favoritos.');
+            }
+        });
+
+        // Filtrar canais na barra de busca
+        function searchChannels() {
+            const input = document.getElementById("searchBar").value.toUpperCase();
+            const items = document.querySelectorAll("#channelList li a");
+
+            items.forEach(item => {
+                const text = item.textContent || item.innerText;
+                item.style.display = text.toUpperCase().includes(input) ? "" : "none";
+            });
+        }
+    </script>
+
+</body></html>
