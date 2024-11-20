@@ -1,0 +1,92 @@
+{
+    "Globo": [
+        {"name": "Globo Rio", "url": "https://reidoscanais.tv/embed/?id=globorj-globorio&autoplay=1", "class": "channel-link"},
+        {"name": "InterTV Alto Litoral", "url": "https://reidoscanais.tv/embed/?id=globorj-intertvaltolitoral", "class": "channel-link"},
+        {"name": "InterTV Serra+Mar", "url": "https://reidoscanais.tv/embed/?id=globorj-intertvserramar", "class": "channel-link"},
+        {"name": "TV Rio Sul", "url": "https://reidoscanais.tv/embed/?id=globorj-tvriosul", "class": "channel-link"},
+        {"name": "Globo São Paulo", "url": "https://reidoscanais.tv/embed/?id=globosp-globosaopaulo", "class": "channel-link"},
+        {"name": "TV Integração Juiz de Fora", "url": "https://reidoscanais.tv/embed/?id=globomg-tvintegracaojuizdefora", "class": "channel-link"},
+        {"name": "NSC TV Joinville", "url": "https://reidoscanais.tv/embed/?id=globosc-nsctvjoinville", "class": "channel-link"},
+        {"name": "Studio", "url": "https://reidoscanais.tv/embed/?id=studiouniversal", "class": "channel-link"},
+        {"name": "Viva", "url": "https://reidoscanais.tv/embed/?id=viva", "class": "channel-link"},
+        {"name": "Universal", "url": "https://reidoscanais.tv/embed/?id=universaltv", "class": "channel-link"},
+        {"name": "Canal Off", "url": "https://reidoscanais.tv/embed/?id=canaloff", "class": "channel-link"},
+        {"name": "Multishow", "url": "https://reidoscanais.tv/embed/?id=multishow", "class": "channel-link"},
+        {"name": "Modo Viagem", "url": "https://reidoscanais.tv/embed/?id=modoviagem", "class": "channel-link"}
+
+    ],
+    "Canais Abertos": [
+        {"name": "SBT", "url": "https://reidoscanais.tv/embed/?id=sbt", "class": "channel-link"},
+        {"name": "Band", "url": "https://reidoscanais.tv/embed/?id=band", "class": "channel-link"},
+        {"name": "Record SP", "url": "https://reidoscanais.tv/embed/?id=recordsp", "class": "channel-link"},
+        {"name": "Rede TV!", "url": "https://reidoscanais.tv/embed/?id=redetv", "class": "channel-link"},
+        {"name": "TV Diário", "url": "https://reidoscanais.tv/embed/?id=tvdiario", "class": "channel-link"},
+        {"name": "TV Cultura", "url": "https://reidoscanais.tv/embed/?id=tvcultura", "class": "channel-link"},
+        {"name": "TV Brasil", "url": "https://reidoscanais.tv/embed/?id=tvbrasil", "class": "channel-link"}
+    ],
+    "Notícias": [
+        {"name": "Globo News", "url": "https://reidoscanais.tv/embed/?id=globonews", "class": "channel-link"},
+        {"name": "CNN Brasil", "url": "https://reidoscanais.tv/embed/?id=cnnbrasil", "class": "channel-link"},
+        {"name": "Band News", "url": "https://reidoscanais.tv/embed/?id=bandnews", "class": "channel-link"},
+        {"name": "JP News", "url": "https://reidoscanais.tv/embed/?id=jpnews", "class": "channel-link"},
+        {"name": "Record News", "url": "https://reidoscanais.tv/embed/?id=recordnews", "class": "channel-link"}
+    ],
+    "ESPN": [
+        {"name": "Espn", "url": "https://reidoscanais.tv/embed/?id=espn", "class": "channel-link"},
+        {"name": "Espn 2", "url": "https://reidoscanais.tv/embed/?id=espn2", "class": "channel-link"},
+        {"name": "Espn 3", "url": "https://reidoscanais.tv/embed/?id=espn3", "class": "channel-link"},
+        {"name": "Espn 4", "url": "https://reidoscanais.tv/embed/?id=espn4", "class": "channel-link"},
+        {"name": "Espn 5", "url": "https://reidoscanais.tv/embed/?id=espn5", "class": "channel-link"},
+        {"name": "Espn 6", "url": "https://reidoscanais.tv/embed/?id=espn6", "class": "channel-link"}
+    ],
+    "HBO": [
+        {"name": "Hbo", "url": "https://reidoscanais.tv/embed/?id=hbo", "class": "channel-link"},
+        {"name": "Hbo 2", "url": "https://reidoscanais.tv/embed/?id=hbo2", "class": "channel-link"},
+        {"name": "Hbo PLUS", "url": "https://reidoscanais.tv/embed/?id=hboplus", "class": "channel-link"},
+        {"name": "Hbo SIGNATURE", "url": "https://reidoscanais.tv/embed/?id=hbosignature", "class": "channel-link"},
+        {"name": "Hbo EXTREME", "url": "https://reidoscanais.tv/embed/?id=hboextreme", "class": "channel-link"},
+        {"name": "Hbo FAMILY", "url": "https://reidoscanais.tv/embed/?id=hbofamily", "class": "channel-link"},
+        {"name": "TLC", "url": "https://reidoscanais.tv/embed/?id=tlc", "class": "channel-link"},
+        {"name": "WARNER", "url": "https://reidoscanais.tv/embed/?id=warnertv", "class": "channel-link"},
+        {"name": "TNT", "url": "https://reidoscanais.tv/embed/?id=tnt", "class": "channel-link"},
+        {"name": "TNT NOVELAS", "url": "https://reidoscanais.tv/embed/?id=tntnovelas", "class": "channel-link"},
+        {"name": "CINEMAX", "url": "https://reidoscanais.tv/embed/?id=cinemax", "class": "channel-link"}
+    ],
+    "Discovery": [
+        {"name": "Discovery Channel", "url": "https://reidoscanais.tv/embed/?id=discoverychannel", "class": "channel-link"},
+        {"name": "Discovery World", "url": "https://reidoscanais.tv/embed/?id=discoveryworld", "class": "channel-link"},
+        {"name": "Discovery Turbo", "url": "https://reidoscanais.tv/embed/?id=discoveryturbo", "class": "channel-link"},
+        {"name": "Discovery ID", "url": "https://reidoscanais.tv/embed/?id=discoveryid", "class": "channel-link"},
+        {"name": "Discovery Kids", "url": "https://reidoscanais.tv/embed/?id=discoverykids", "class": "channel-link"},
+        {"name": "Discovery Theater", "url": "https://reidoscanais.tv/embed/?id=discoverytheater", "class": "channel-link"},
+        {"name": "Discovery Home & Health", "url": "https://reidoscanais.tv/embed/?id=discoveryheh", "class": "channel-link"},
+       {"name": "Food Network", "url": "https://reidoscanais.tv/embed/?id=foodnetwork", "class": "channel-link"},
+        {"name": "Discovery Science", "url": "https://reidoscanais.tv/embed/?id=discoveryscience", "class": "channel-link"},
+        {"name": "Animal Planet", "url": "https://reidoscanais.tv/embed/?id=animalplanet", "class": "channel-link"}
+    ],
+    "Disney": [
+        {"name": "Star Channel", "url": "https://reidoscanais.tv/embed/?id=starchannel", "class": "channel-link"},
+        {"name": "FX", "url": "https://reidoscanais.tv/embed/?id=fx", "class": "channel-link"},
+        {"name": "Disney Channel", "url": "https://reidoscanais.tv/embed/?id=disneychannel", "class": "channel-link"},
+        {"name": "Cine Canal", "url": "https://reidoscanais.tv/embed/?id=cinecanal", "class": "channel-link"},
+        {"name": "A&E", "url": "https://reidoscanais.tv/embed/?id=aee", "class": "channel-link"},
+        {"name": "Lifetime", "url": "https://reidoscanais.tv/embed/?id=lifetime", "class": "channel-link"}
+    ],
+    "History": [
+        {"name": "History", "url": "https://reidoscanais.tv/embed/?id=history", "class": "channel-link"},
+        {"name": "History 2", "url": "https://reidoscanais.tv/embed/?id=history2", "class": "channel-link"}
+    ],
+    "SONY": [
+        {"name": "Sony Channel", "url": "https://reidoscanais.tv/embed/?id=sonychannel", "class": "channel-link"},
+        {"name": "Sony Movies", "url": "https://reidoscanais.tv/embed/?id=sonymovies", "class": "channel-link"}
+    ],
+    "Paramount": [
+        {"name": "Paramount Network", "url": "https://reidoscanais.tv/embed/?id=paramountnetwork", "class": "channel-link"},
+        {"name": "MTV", "url": "https://reidoscanais.tv/embed/?id=mtv", "class": "channel-link"},
+        {"name": "MTV Live", "url": "https://reidoscanais.tv/embed/?id=mtvlive", "class": "channel-link"},
+        {"name": "Nickelodeon", "url": "https://reidoscanais.tv/embed/?id=nickelodeon", "class": "channel-link"},
+        {"name": "Nick Jr.", "url": "https://reidoscanais.tv/embed/?id=nickjr", "class": "channel-link"},
+        {"name": "Sportv", "url": "https://reidoscanais.tv/embed/?id=sportv", "class": "channel-link"}
+
+    ]
+}
